@@ -1,0 +1,403 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ExtraiDadosIBGE" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="arg_dtDadosIBGE" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1284,3318</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="62">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Entrada - Cidades e ceps extraídos da planilha gerada no workflow ExtraiCidades.&#xA;Processamento - Extrai dados do site do IBGE.&#xA;Saída - Datatable arg_dtDadosIBGE com as cidades e informações extraidas do site do IBGE." sap:VirtualizedContainerService.HintSize="1294,3253" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="var_strCidade" />
+      <Variable x:TypeArguments="x:String" Name="var_strCep" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="1252,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[var_strCidade]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Cidade").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1252,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[var_strCep]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("CEP").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: https://cidades.ibge.gov.br" sap:VirtualizedContainerService.HintSize="1252,2904" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="1218,2688" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="1176,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1176,2532" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="var_strCod" />
+                <Variable x:TypeArguments="x:String" Name="var_strGent" />
+                <Variable x:TypeArguments="x:String" Name="var_strPref" />
+                <Variable x:TypeArguments="x:String" Name="var_strPopEst" />
+                <Variable x:TypeArguments="x:String" Name="var_strPopUltCen" />
+                <Variable x:TypeArguments="x:String" Name="var_strDens" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'Selecionar local'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5b05d492-7d00-4428-9a3c-760cce4cc92b" InformativeScreenshot="6e748048d20cb59657e86688a2224b18" Selector="&lt;webctrl aaname='Selecionar local' tag='BUTTON' type='button' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Municipio'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6ad2f787-ca14-4b4e-8c46-377b7cad3086" InformativeScreenshot="f04e5fa1a05ae3f47185766683368a2f" Selector="&lt;webctrl id='menu__municipio' tag='LI' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+              </ui:Click>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Todos os municípios'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1134,226" sap2010:WorkflowViewState.IdRef="NTypeInto_1" Text="[var_strCidade]">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://cidades.ibge.gov.br/" DesignTimeRectangle="714, 211, 607, 31" ElementType="InputBox" FriendlyName="'INPUT busca'" FullSelectorArgument="&lt;webctrl id='busca' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='busca' tag='INPUT' type='text' aaname='' /&gt;" ImageBase64="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" InformativeScreenshot="815e720635e2c6eaeae62eba5f94ad89.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='https://cidades.ibge.gov.br' /&gt;" SearchSteps="Selector, Image">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="714, 181, 148, 16" ElementType="Text" FriendlyName="'Todos os municípios'" FullSelectorArgument="&lt;webctrl parentid='terceira-coluna' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='terceira-coluna' tag='SPAN' type='' aaname='Todos os municípios' check:text='Todos os municípios' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJgAAAAUCAYAAABxsPSCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALmSURBVGhD7ZjNcWJBDIRfTiRFEkRCEqTAkSMnTgRAAFy4PFdv+fN29er9YT/XGo+quvBoJE2rJTi422w2fUPDWmgL1rAq2oI1rIq2YA2r4mPBttttf7vd+jG7Xq//FJgCdR+PR7/f78uYhhqn0+mP7vqs7is8k6O5yg6HQ3n/GbQF+4+xdFl2u11/v98XLZfwLQuWeOabUKEt2O/G4gXDj+WvWv4Sns/ncsGW1pFN/YLyDcaqpda31G1s8eXXvWpeLpf3jL88+ObL/NuP332pp5+9jnpW71WOkLo4f/oX9Lefj8fje0b/cU/Nii+9Y5kzdz5dOkDVnAvhhijVo5gL8Zk6zseRgrghXC4XluLNqZnmNaqBpZ6cK8sYzkO6oK0vlP7mXNkY3yGdeGfJfDo/OLI5Fxsi3oB8xEBEMZDFN6cODXidKSASSyofPeCDi2Izv0LFlXdyiM51yYJVg4Zf5sDfczwGLsmNe8VXPufrywMPj9Hnkvl0lVNw4joPDYc4+auYJDOnjp+xsWaGGkZM/C4uljwcylEuA5MveVZv606mXqlFnj6rOkJqM5TDOUF/8M0zcfm28x3KSS2ogaX2oEsHyGbmLEYV8+yCpR/Le2HugqUfGxJHPt252KnL2IIRU/myjvCTFixrYdQEnR8c2QwPyEREPsjgI8bFRjR8c+rIlyAvGwSIpGFr6PLRg/sS5NGno3ozdRlbMMT2/sjLOgJakZcx3Fd8lMM73Ffvwtd98FV9v4eHx7jPMTSfzoMc2ZzAI2kM0MmlVQNIo44LkzbVYGUsLT2lObeqpouWutCz1xh6R0Ze1hGmFmxMX+WiG3zHdPSemAc6wSONHsfq5nw6PzgqAdyPZcEU4Sv/TaGz/B7nyMarxanEQ9jEswsmMDSZ7qWDjLysI8ANLaqYShf40z98/awYcZR5PwJcXQd6xzJn7nw6PzS8FnLhqpi10RbshdEWrGFVtAVreHm0BWtYEZv+Dd8RvlZEtbyoAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Cidade'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ccf786e2-1eeb-4992-bcaf-ec9d11aec45a" InformativeScreenshot="fdfc7b891f142da07c9943539d6f86f0" Selector="&lt;webctrl parentid='todos-municipios' tag='A' idx='1' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'codigo'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02ac7f7f-fe62-4b98-a5e6-e16bcd6f2329" InformativeScreenshot="894f26e22287af26e660d92dffe1f65b" Selector="&lt;html app='chrome.exe' title='https://cidades.ibge.gov.br/brasil/mg*' /&gt;&lt;webctrl tag='P' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[var_strCod]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'gentilico'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02ac7f7f-fe62-4b98-a5e6-e16bcd6f2329" InformativeScreenshot="3b5cc2e3f10b4983549d55f1715fe7da" Selector="&lt;html app='chrome.exe' title='https://cidades.ibge.gov.br/brasil/mg/*' /&gt;&lt;webctrl idx='2' tag='P' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[var_strGent]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Prefeito'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02ac7f7f-fe62-4b98-a5e6-e16bcd6f2329" InformativeScreenshot="87a097154d21083effe9e1ffbb567c4c" Selector="&lt;html app='chrome.exe' title='https://cidades.ibge.gov.br/brasil/mg/*' /&gt;&lt;webctrl css-selector='body&amp;gt;app&amp;gt;shell&amp;gt;div&amp;gt;div&amp;gt;panorama-shell&amp;gt;div&amp;gt;section&amp;gt;panorama-resumo&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;p' idx='3' tag='P' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[var_strPref]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'População estimada'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02ac7f7f-fe62-4b98-a5e6-e16bcd6f2329" InformativeScreenshot="0b1f60c214497fad6e3d44080e1562fc" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='https://cidades.ibge.gov.br/brasil/mg/*' /&gt;&lt;ctrl idx='2' role='row' /&gt;&lt;ctrl name='*pessoas  ' role='cell' /&gt;&lt;ctrl role='grouping' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[var_strPopEst]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'População Ult. Censo'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="GetValue_5">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02ac7f7f-fe62-4b98-a5e6-e16bcd6f2329" InformativeScreenshot="b2abf7657cdcfac3c02d8cdbe0e94a24" Selector="&lt;html app='chrome.exe' title='https://cidades.ibge.gov.br/brasil/mg/*' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='4' tag='TD' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[var_strPopUltCen]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Densidade'" sap:VirtualizedContainerService.HintSize="1134,106" sap2010:WorkflowViewState.IdRef="GetValue_6">
+                <ui:GetValue.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="02ac7f7f-fe62-4b98-a5e6-e16bcd6f2329" InformativeScreenshot="d6a672fa669f61116c203c503f082ec4" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='https://cidades.ibge.gov.br/brasil/mg/*' /&gt;&lt;ctrl idx='6' role='row' /&gt;&lt;ctrl name='*hab/km²  ' role='cell' /&gt;&lt;ctrl role='grouping' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetValue.Target>
+                <ui:GetValue.Value>
+                  <OutArgument x:TypeArguments="x:String">[var_strDens]</OutArgument>
+                </ui:GetValue.Value>
+              </ui:GetValue>
+              <ui:MultipleAssign sap2010:Annotation.AnnotationText="Removendo espaços e alterando , para ." DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1134,284" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[var_strCod]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[var_strCod.TrimEnd.TrimStart]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[var_strGent]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[var_strGent.TrimEnd.TrimStart]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[var_strPref]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[var_strPref.TrimEnd.TrimStart]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[var_strPopEst]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[var_strPopEst.Replace("pessoas","").Replace(".","").TrimEnd.TrimStart]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[var_strPopUltCen]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[var_strPopUltCen.Replace(" pessoas","").Replace(".","").TrimEnd.TrimStart]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[var_strDens]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[var_strDens.Replace(" ","").TrimEnd.TrimStart]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+              <If sap2010:Annotation.AnnotationText="Definindo classificação." Condition="[Integer.Parse(var_strPopEst) &lt;=15000]" sap:VirtualizedContainerService.HintSize="1134,534" sap2010:WorkflowViewState.IdRef="If_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,279" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{var_strCidade,var_strCep,var_strCod,var_strGent,var_strPref,var_strPopEst + &quot;pessoas&quot;,var_strPopUltCen + &quot;pessoas&quot;,var_strDens,&quot;1&quot;}]" DataTable="[arg_dtDadosIBGE]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <If Condition="[Integer.Parse(var_strPopEst) &lt;=30000]" sap:VirtualizedContainerService.HintSize="713,344" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{var_strCidade,var_strCep,var_strCod,var_strGent,var_strPref,var_strPopEst + &quot;pessoas&quot;,var_strPopUltCen + &quot;pessoas&quot;,var_strDens,&quot;2&quot;}]" DataTable="[arg_dtDadosIBGE]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                    </If.Then>
+                    <If.Else>
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{var_strCidade,var_strCep,var_strCod,var_strGent,var_strPref,var_strPopEst + &quot;pessoas&quot;,var_strPopUltCen + &quot;pessoas&quot;,var_strDens,&quot;3&quot;}]" DataTable="[arg_dtDadosIBGE]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1382, 744" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKsSURBVFhH7ZbZjtowFIZ5pL5gq2HfAmHf9+2FuOlcTMUNKgikSEhlhzP+kzhkgidwRr1rLf1KcoG/z8Y+duB/U7XxeEzIaDSi4XBIg8GA+v0B9fp96vV61O12qdPpULvdoVa7Tc1WixrNJjUaTarXG9TudIxSqfTN7o7fAL9cLnc5u3P25kzX65UmkwnNZjNIfV0CIwfwdDrRETnKHOkgc7Cee/G0cjAlILDZbOjt7RfVGw1D/4oEpl0l4MDx7iNgGAat12v6+fpK1Vrd0HWdJ4H/HAImXCUAuAO+F1itVrRcLmk+n9N0OqVKpWrYXT/XsOAcARt+N/0usFdA07QPyRUKZHf9XMNqNwUcuM/0728CeF+Ikf9eyCzEbKwpl88zBcRWkwI3sAtuAt2BhCWwc2e3F+voTHqOKYB9jq32EC4gjgDe3fD93hHI6jmeAIqMJYAZuIHNCJnbqOXTC7cEtrZAJqvzBFDhUFzUYHxLuC0ggKrRSwEtm+UJoLyaM+ABmwHM+VbBLQHApUA6k+EJoLZjBu7AiAT7wOXoHQGNKYCDBXvagbhFGHApkEprTAFxqn2cARvqCxfxwC2BEyVTaZ4AjlRnBjxQJVgxchlU00QqxROo1euWgOjcH4x8Dt9ud6ZAPMkUqNZqdBICaqA7/vA/tkAskeQJVKrVBwIW+BHcEYgneALlildAwGQE4FMw4oJLgWgszhQoV8ztI2EPoXbcYLdAJBbjCZTKZVNABVFGAZaBQDjKFCiWSs8JKIDeQCAUifIECkU/gd1TYBkIBMMRnkC+UDQrmIRxgN6YAqEwTwB3OPxQ1SE36OeFLSDucPjh38qPYIgngDscrlG4yeAygfMcRypONRwsqO0or6hwKDLY59hqWO1YcPjPMe0YOeDfX4I8gX+oBQLvEwJiQgPuVJwAAAAASUVORK5CYII=" InformativeScreenshot="04717046c124449b44ce5ae113137230.png" Selector="&lt;html app='chrome.exe' title='https://cidades.ibge.gov.br'/&gt;" Url="https://cidades.ibge.gov.br/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
